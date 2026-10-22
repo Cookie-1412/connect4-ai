@@ -1,0 +1,22 @@
+# Separate GPU-accelerated environment for your AMD RX 7800 XT (via DirectML).
+#
+# WHY THIS IS SEPARATE FROM requirements.txt / .venv:
+# torch-directml requires Python 3.8-3.12 (this machine's default Python is
+# 3.14, which has no compatible torch-directml wheel) and pulls in an older
+# torch than the CPU-only one in the main .venv. Keeping it in its own venv
+# avoids downgrading torch for the rest of the project, which only needs CPU.
+#
+# Setup (already done once, kept here for reference / reinstalling later):
+#   1. Install Python 3.12 (separate from the main 3.14 install):
+#        winget install --id Python.Python.3.12 -e
+#   2. Create this venv from that specific interpreter:
+#        py -3.12 -m venv .venv-directml
+#   3. Install into it:
+#        .venv-directml\Scripts\python.exe -m pip install -r requirements-directml.txt
+#
+# Usage: run training scripts with .venv-directml\Scripts\python.exe instead
+# of the usual .venv\Scripts\python.exe. Device API differs from standard
+# CUDA code -- use torch_directml.device() instead of torch.device("cuda").
+
+torch==2.4.1
+torch-directml==0.2.5.dev240914

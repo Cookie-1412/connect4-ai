@@ -1,0 +1,15 @@
+# Core game has no dependencies. These are only needed for:
+# - `python main.py export-npz` (packing training data into tensors)
+# - running the test suite
+# - training a learned AI evaluator (torch)
+numpy
+pytest
+torch
+
+# Run: .venv\Scripts\python.exe -m pip install -r requirements.txt
+#
+# torch note: installed here as the CPU-only build, since this project's
+# scale doesn't need GPU acceleration and CPU-only avoids AMD/Windows GPU
+# setup friction (see project notes). If requirements.txt alone pulls a
+# different build, install torch explicitly first with:
+#   .venv\Scripts\python.exe -m pip install torch --index-url https://download.pytorch.org/whl/cpu

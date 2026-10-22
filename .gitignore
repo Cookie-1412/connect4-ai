@@ -1,0 +1,13 @@
+.venv/
+.venv-directml/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.env
+data/.tensor_cache/
+*.bak
+
+# Self-play game logs are several GB. Regenerate them with `python main.py selfplay`.
+data/*.jsonl
+data/*.npz
